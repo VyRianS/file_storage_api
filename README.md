@@ -13,6 +13,11 @@ This project is a simple attempt to create a file storage system that is docker-
 - Running container exposes and maps port 5000 for external requests.
 
 ## Build
+Clone the the file_storage_api repository.
+```
+git clone https://github.com/VyRianS/file_storage_api/
+```
+
 Ensure that `docker` is installed and service is running.
 ```
 sudo systemctl status docker
