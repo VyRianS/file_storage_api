@@ -24,7 +24,7 @@ Ensure that `docker` is installed and service is running.
 sudo systemctl status docker
 ```
 
-Check that there are no other processes listening on port 5000. The following command should not return any set.
+Check that there are no other processes listening on port 5000. The following command _should not return any set_.
 ```
 netstat -antu | grep ":5000 " | grep "LISTEN"
 ```
