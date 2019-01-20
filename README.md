@@ -14,7 +14,7 @@ This project is a simple attempt to create a file storage system that is docker-
 - Running container exposes and maps port 5000 for external requests.
 
 ## Build
-Clone the the file_storage_api repository into the desired directory.
+Clone this repository into the desired directory.
 ```
 git clone https://github.com/VyRianS/file_storage_api/
 ```
