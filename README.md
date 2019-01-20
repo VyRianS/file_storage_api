@@ -20,7 +20,7 @@ sudo systemctl status docker
 
 To build, change directory to the file_storage_api directory where it was cloned/pulled, and run the following commands:
 ```
-docker build -t file_storage_api
+docker build -t file_storage_api .
 docker run -it -p 5000:5000/tcp file_storage_api
 ```
 
