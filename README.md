@@ -7,8 +7,9 @@ This project is a simple attempt to create a file storage system that is docker-
   3. Retrieve file contents via GET
   4. Delete files via DELETE
 
+- Developed on CentOS7 3.10 (2018-11-29)
 - Core logic in `api.py` is written in Python3.6.
-- Only accepts files with .TXT, .JSON, or .XML extensions.
+- Only accepts files with .txt, .json, or .xml extensions.
 - Files uploaded are stored on the local server under folders `_storage` and `_temp`.
 - Running container exposes and maps port 5000 for external requests.
 
@@ -21,6 +22,11 @@ git clone https://github.com/VyRianS/file_storage_api/
 Ensure that `docker` is installed and service is running.
 ```
 sudo systemctl status docker
+```
+
+Check that there are no other processes listening on port 5000. The following command should not return any set.
+```
+netstat -antu | grep ":5000 " | grep "LISTEN"
 ```
 
 To build, change directory to the file_storage_api directory where it was cloned/pulled, and run the following commands:
