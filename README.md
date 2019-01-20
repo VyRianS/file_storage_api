@@ -10,7 +10,7 @@ This project is a simple attempt to create a file storage system that is docker-
 - Developed on CentOS7 3.10 (released 2018-11-29).
 - Core logic in `api.py` is written in Python3.6 and invokes the `Flask` module.
 - Only accepts files with .txt, .json, or .xml extensions.
-- Files uploaded are stored on the local server under folders `_storage` and `_temp`.
+- Files uploaded are stored on the container's working directory in folders `_storage` and `_temp`.
 - Running container exposes and maps port 5000 for external requests.
 
 ## Build
