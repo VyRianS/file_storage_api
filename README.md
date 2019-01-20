@@ -40,35 +40,35 @@ Flask server should immediately begin to run and accept external requests.
 ## API Interactions
 
 ### POST 
-**Objective**: Uploads a named file.
-**URL**:       `http://127.0.0.1:5000/upload` <br />
-**Example**:   `curl -X POST -F "file=@/home/code/file_storage_api/textfile.txt" http://127.0.0.1:5000/upload` <br />
-**Outcomes**:  <br />
+**Objective**: Uploads a named file.<br />
+**URL**:       `http://127.0.0.1:5000/upload`<br />
+**Example**:   `curl -X POST -F "file=@/home/code/file_storage_api/textfile.txt" http://127.0.0.1:5000/upload`<br />
+**Outcomes**:<br />
 - `200` `File uploaded.`
 - `400` `Empty filename.`
 - `400` `Unrecognized file format.`
 - `400` `Duplicate filename in storage.`
 
 ### PUT
-**Objective**: Modifies an existing file. Fails if file is not found. No action done if file hash is the same. <br />
-**URL**:       `http://127.0.0.1:5000/upload` <br />
-**Example**:   `curl -X PUT -F "file=@/home/code/file_storage_api/textfile.txt" http://127.0.0.1:5000/upload` <br />
-**Outcomes**:  <br />
+**Objective**: Modifies an existing file. Fails if file is not found. No action done if file hash is the same.<br />
+**URL**:       `http://127.0.0.1:5000/upload`<br />
+**Example**:   `curl -X PUT -F "file=@/home/code/file_storage_api/textfile.txt" http://127.0.0.1:5000/upload`<br />
+**Outcomes**:<br />
 - `200` `File updated.`
 - `200` `No difference between file being uploaded and existing file.`
 - `400` `File does not exist.`
 
 ### GET
-**Objective**: Retrieves contents of named file. <br />
-**URL**:       `http://127.0.0.1:5000/<filename>` <br />
-**Example**:   `curl -X GET http://127.0.0.1:5000/textfile.txt` <br />
-**Outcomes**:  <br />
+**Objective**: Retrieves contents of named file.<br />
+**URL**:       `http://127.0.0.1:5000/<filename>`<br />
+**Example**:   `curl -X GET http://127.0.0.1:5000/textfile.txt`<br />
+**Outcomes**:<br />
 - `200` `<file_contents>`
 - `400` `File does not exist.`
 
 ### DELETE
-**Objective**: Deletes named file. <br />
-**URL**:       `http://127.0.0.1:5000/<filename>` <br />
-**Example**:   `curl -X DELETE http://127.0.0.1:5000/textfile.txt` <br />
-**Outcomes**:  <br />
+**Objective**: Deletes named file.<br />
+**URL**:       `http://127.0.0.1:5000/<filename>`<br />
+**Example**:   `curl -X DELETE http://127.0.0.1:5000/textfile.txt`<br />
+**Outcomes**:<br />
 - `200` `File deleted.`
