@@ -40,7 +40,7 @@ Flask server should immediately begin to run and accept external requests.
 ## API Interactions
 
 ### POST 
-**Objective**: Uploads a file. Copies the file to the `_storage` folder. <br />
+**Objective**: Uploads a named file.
 **URL**:       `http://127.0.0.1:5000/upload` <br />
 **Example**:   `curl -X POST -F "file=@/home/code/file_storage_api/textfile.txt" http://127.0.0.1:5000/upload` <br />
 **Outcomes**:  <br />
