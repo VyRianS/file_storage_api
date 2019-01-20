@@ -1,12 +1,9 @@
 
 # Example POST syntax
-# curl -F "file=@/home/code/a.pdf" http://127.0.0.1:5000/upload
-
-# Example DELETE syntax
-# curl -X DELETE http://127.0.0.1:5000/delete/textfile.txt
+# curl -F "file=@/home/code/file_storage_api/textfile.txt" http://127.0.0.1:5000/upload
 
 # Example PUT (update) syntax
-# curl -X PUT -F "file=@/home/code/textfile.txt" http://127.0.0.1:5000/upload
+# curl -X PUT -F "file=@/home/code/file_storage_api/textfile.txt" http://127.0.0.1:5000/upload
 
 # Example DELETE syntax
 # curl -X DELETE http://127.0.0.1:5000/textfile.txt
@@ -17,14 +14,39 @@ import hashlib
 from flask import Flask, request, flash, make_response, jsonify, send_from_directory
 from werkzeug.utils import secure_filename
 
-STORAGE_FOLDER = '/home/code/http-api/_storage'
-TEMP_FOLDER = '/home/code/http-api/_temp'
+STORAGE_FOLDER = "/home/code/file_storage_api/_storage"
+TEMP_FOLDER = "/home/code/file_storage_api/_temp" 
 ALLOWED_EXTENSIONS = set(['txt','json','xml'])
 BUF_SIZE = 65536
+
+
+'''
+def parse_config():
+    global STORAGE_FOLDER
+    global TEMP_FOLDER
+
+    # read config from HOME_FOLDER directory!
+    with open(os.path.join(HOME_FOLDER,"api.cfg"), "r") as f:
+        for line in f:
+            if line.split("=")[0] == "STORAGE_FOLDER":
+                STORAGE_FOLDER = line.split("=")[1]
+            elif line.split("=")[0] == "TEMP_FOLDER":
+                TEMP_FOLDER = line.split("=")[1]
+            
+    
+'''
+
+# check if storage and temp directories exist, otherwise create them
+if not os.path.exists(STORAGE_FOLDER):
+    os.makedirs(STORAGE_FOLDER)
+
+if not os.path.exists(TEMP_FOLDER):
+    os.makedirs(TEMP_FOLDER)
 
 app = Flask(__name__)
 app.config['STORAGE_FOLDER'] = STORAGE_FOLDER
 app.config['TEMP_FOLDER'] = TEMP_FOLDER
+
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
