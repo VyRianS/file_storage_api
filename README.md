@@ -7,7 +7,7 @@ This project is a simple attempt to create a file storage system that is docker-
   3. Retrieve file contents via GET
   4. Delete files via DELETE
 
-- Developed on CentOS7 3.10 (2018-11-29)
+- Developed on CentOS7 3.10 (released 2018-11-29).
 - Core logic in `api.py` is written in Python3.6.
 - Only accepts files with .txt, .json, or .xml extensions.
 - Files uploaded are stored on the local server under folders `_storage` and `_temp`.
