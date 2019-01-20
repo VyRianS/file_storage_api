@@ -7,7 +7,7 @@ This project is a simple attempt to create a file storage system that is docker-
   3. Retrieve file contents via GET
   4. Delete files via DELETE
 
-- Functional script `api.py`, is written in Python3.6.
+- Core logic in `api.py` is written in Python3.6.
 - Only accepts files with .TXT, .JSON, or .XML extensions.
 - Files uploaded are stored on the local server under folders `_storage` and `_temp`.
 - Running container exposes and maps port 5000 for external requests.
