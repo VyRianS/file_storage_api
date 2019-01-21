@@ -3,7 +3,7 @@
 ## Architecture
 This project is a simple attempt to create a file storage system that is docker-portable with the following features:
   1. Add files via POST
-  2. Modify files via PUT
+  2. Add or modify files via PUT
   3. Retrieve file contents via GET
   4. Delete files via DELETE
 
