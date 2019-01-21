@@ -50,7 +50,7 @@ Flask server should immediately begin to run and accept external requests.
 - `400` `Duplicate filename in storage.`
 
 ### PUT
-**Objective**: Modifies an existing file. Fails if file is not found. No action done if file hash is the same.<br />
+**Objective**: Modifies an existing file or uploads if file is not found. No action done if file hash is the same.<br />
 **URL**:       `http://127.0.0.1:5000/upload`<br />
 **Example**:   `curl -X PUT -F "file=@textfile.txt" http://127.0.0.1:5000/upload`<br />
 **Outcomes**:<br />
