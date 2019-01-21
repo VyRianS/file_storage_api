@@ -54,6 +54,7 @@ Flask server should immediately begin to run and accept external requests.
 **URL**:       `http://127.0.0.1:5000/upload`<br />
 **Example**:   `curl -X PUT -F "file=@textfile.txt" http://127.0.0.1:5000/upload`<br />
 **Outcomes**:<br />
+- `200` `File uploaded.`
 - `200` `File updated.`
 - `200` `No difference between file being uploaded and existing file.`
 - `400` `File does not exist.`
