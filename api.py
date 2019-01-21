@@ -76,9 +76,17 @@ def upload_file():
 
     if request.method == 'PUT':
 
+        # Add file if it does not exist in storage
         if file.filename not in os.listdir(os.path.join(app.config['STORAGE_FOLDER'])):
-            return make_response(jsonify({"error": "File does not exist."}), 400)
-        else:
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['STORAGE_FOLDER'], file.filename))
+                return make_response(jsonify({"result": "File uploaded."}), 200)
+            else:
+                return make_response(jsonify({"error": "Unrecognized file format."}), 400)
+
+        # If file exists, attempt to update
+        if file.filename in os.listdir(os.path.join(app.config['STORAGE_FOLDER'])):
             md5_existing = hashlib.md5()
             md5_new = hashlib.md5()
 
