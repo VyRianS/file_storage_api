@@ -42,7 +42,7 @@ Flask server should immediately begin to run and accept external requests.
 ### POST 
 **Objective**: Uploads a named file.<br />
 **URL**:       `http://127.0.0.1:5000/upload`<br />
-**Example**:   `curl -X POST -F "file=@/home/code/file_storage_api/textfile.txt" http://127.0.0.1:5000/upload`<br />
+**Example**:   `curl -X POST -F "file=@textfile.txt" http://127.0.0.1:5000/upload`<br />
 **Outcomes**:<br />
 - `200` `File uploaded.`
 - `400` `Empty filename.`
@@ -52,7 +52,7 @@ Flask server should immediately begin to run and accept external requests.
 ### PUT
 **Objective**: Modifies an existing file. Fails if file is not found. No action done if file hash is the same.<br />
 **URL**:       `http://127.0.0.1:5000/upload`<br />
-**Example**:   `curl -X PUT -F "file=@/home/code/file_storage_api/textfile.txt" http://127.0.0.1:5000/upload`<br />
+**Example**:   `curl -X PUT -F "file=@textfile.txt" http://127.0.0.1:5000/upload`<br />
 **Outcomes**:<br />
 - `200` `File updated.`
 - `200` `No difference between file being uploaded and existing file.`
