@@ -19,7 +19,6 @@ TEMP_FOLDER = "/home/code/file_storage_api/_temp"
 ALLOWED_EXTENSIONS = set(['txt','json','xml'])
 BUF_SIZE = 65536
 
-
 '''
 def parse_config():
     global STORAGE_FOLDER
@@ -32,11 +31,10 @@ def parse_config():
                 STORAGE_FOLDER = line.split("=")[1]
             elif line.split("=")[0] == "TEMP_FOLDER":
                 TEMP_FOLDER = line.split("=")[1]
-            
     
 '''
 
-# check if storage and temp directories exist, otherwise create them
+# check if storage and temp directories exist, otherwise create them.
 if not os.path.exists(STORAGE_FOLDER):
     os.makedirs(STORAGE_FOLDER)
 
@@ -76,7 +74,7 @@ def upload_file():
 
     if request.method == 'PUT':
 
-        # Add file if it does not exist in storage
+        # Add file if it does not exist in storage.
         if file.filename not in os.listdir(os.path.join(app.config['STORAGE_FOLDER'])):
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
@@ -85,30 +83,30 @@ def upload_file():
             else:
                 return make_response(jsonify({"error": "Unrecognized file format."}), 400)
 
-        # If file exists, attempt to update
+        # If file exists, attempt to update.
         if file.filename in os.listdir(os.path.join(app.config['STORAGE_FOLDER'])):
             md5_existing = hashlib.md5()
             md5_new = hashlib.md5()
 
             existing_file = os.path.join(app.config['STORAGE_FOLDER'], file.filename)
 
-            # Find hash of existing file
+            # Find hash of existing file.
             with open(existing_file, "rb") as f:
                 while True:
-                    data = f.read(BUF_SIZE)  # read data as BUF_SIZE byte chunks
+                    data = f.read(BUF_SIZE)  # Read data as BUF_SIZE byte chunks.
                     if not data:
                         break
                     md5_existing.update(data)
             print("MD5: {0}".format(md5_existing.hexdigest()))
 
-            # Copy the file being uploaded into the TEMP_FOLDER directory for processing
+            # Copy the file being uploaded into the TEMP_FOLDER directory for processing.
             print('saving file in temp directory for processing...')
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['TEMP_FOLDER'], file.filename))
 
             temp_file = os.path.join(app.config['TEMP_FOLDER'], file.filename)
 
-            # Find hash of file being uploaded
+            # Find hash of file being uploaded.
             with open(temp_file, "rb") as f:
                 while True:
                     data = f.read(BUF_SIZE)
@@ -121,7 +119,7 @@ def upload_file():
                 os.remove(temp_file)
                 return make_response(jsonify({"result": "No difference between file being uploaded and existing file."}), 200)
             else:
-                # Copy the file from temp location and overwrite main storage
+                # Copy the file from temp location and overwrite main storage.
                 shutil.move(temp_file, existing_file)
                 return make_response(jsonify({"result": "File updated."}), 200)
 
