@@ -16,23 +16,24 @@ This project is a simple attempt to create a file storage system that is docker-
 ## Build
 Clone this repository into the desired directory.
 ```
-git clone https://github.com/VyRianS/file_storage_api/
+$ git clone https://github.com/VyRianS/file_storage_api/
 ```
 
 Ensure that `docker` is installed and service is running.
 ```
-sudo systemctl status docker
+$ sudo systemctl status docker
 ```
 
 Check that there are no other processes listening on port 5000. The following command _should not return any set_.
 ```
-netstat -antu | grep ":5000 " | grep "LISTEN"
+$ netstat -antu | grep ":5000 " | grep "LISTEN"
 ```
 
 To build, change directory to the file_storage_api directory where it was cloned/pulled, and run the following commands.
 ```
-docker build -t file_storage_api .
-docker run -it -p 5000:5000/tcp file_storage_api
+$ cd file_storage_api
+$ docker build -t file_storage_api .
+$ docker run -it -p 5000:5000/tcp file_storage_api
 ```
 
 Flask server should immediately begin to run and accept external requests. 
