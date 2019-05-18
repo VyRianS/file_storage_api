@@ -45,7 +45,6 @@ app = Flask(__name__)
 app.config['STORAGE_FOLDER'] = STORAGE_FOLDER
 app.config['TEMP_FOLDER'] = TEMP_FOLDER
 
-
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
